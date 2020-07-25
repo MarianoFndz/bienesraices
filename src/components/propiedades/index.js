@@ -7,7 +7,7 @@ import { Contenido, Sidebar } from "./styled"
 
 const Propiedades = ({
   data: {
-    allStrapiPropiedades: { nodes },
+    allDatoCmsPropiedad: { nodes },
   },
 }) => {
   const {
@@ -16,7 +16,7 @@ const Propiedades = ({
     wc,
     estacionamiento,
     habitaciones,
-    agentes,
+    agente,
     imagen,
     precio,
   } = nodes[0]
@@ -26,7 +26,7 @@ const Propiedades = ({
       <h1> {nombre} </h1>
       <Contenido>
         <main>
-          <Image fluid={imagen.sharp.fluid} /> <p> {descripcion} </p>
+          <Image fluid={imagen.fluid} /> <p> {descripcion} </p>
         </main>{" "}
         <Sidebar>
           <p className="precio"> {precio} </p>
@@ -36,8 +36,8 @@ const Propiedades = ({
             habitaciones={habitaciones}
           />
           <div className="agente">
-            <h2> Vendedor: </h2> <p> {agentes.nombre} </p>
-            <p> Tel: {agentes.telefono} </p> <p> Email: {agentes.email} </p>
+            <h2> Vendedor: </h2> <p> {agente.nombre} </p>
+            <p> Tel: {agente.telefono} </p> <p> Email: {agente.email} </p>
           </div>
         </Sidebar>
       </Contenido>
@@ -49,7 +49,7 @@ export default Propiedades
 
 export const query = graphql`
   query($id: String!) {
-    allStrapiPropiedades(filter: { id: { eq: $id } }) {
+    allDatoCmsPropiedad(filter: { id: { eq: $id } }) {
       nodes {
         nombre
         descripcion
@@ -57,16 +57,14 @@ export const query = graphql`
         habitaciones
         precio
         estacionamiento
-        agentes {
+        agente {
           nombre
           telefono
           email
         }
         imagen {
-          sharp: childImageSharp {
-            fluid(maxWidth: 3080, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+          fluid(maxWidth: 3080) {
+            ...GatsbyDatoCmsFluid
           }
         }
       }

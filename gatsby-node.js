@@ -3,33 +3,33 @@ const urlSlug = require("url-slug")
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const resultado = await graphql(`
     query {
-      allStrapiPaginas {
+      allDatoCmsPagina {
         nodes {
           nombre
           id
+          slug
         }
       }
-      allStrapiPropiedades {
+      allDatoCmsPropiedad {
         nodes {
           nombre
           id
+          slug
         }
       }
     }
   `)
 
-  console.log(JSON.stringify(resultado.data.allStrapiPropiedades))
-
   if (resultado.errors) {
     reporter.panic("No hubo resultados", resultado.errors)
   }
 
-  const paginas = resultado.data.allStrapiPaginas.nodes
-  const propiedades = resultado.data.allStrapiPropiedades.nodes
+  const paginas = resultado.data.allDatoCmsPagina.nodes
+  const propiedades = resultado.data.allDatoCmsPropiedad.nodes
 
   paginas.forEach(pagina => {
     actions.createPage({
-      path: urlSlug(pagina.nombre),
+      path: pagina.slug,
       component: require.resolve("./src/components/paginas"),
       context: {
         id: pagina.id,
@@ -39,7 +39,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   propiedades.forEach(propiedad => {
     actions.createPage({
-      path: urlSlug(propiedad.nombre),
+      path: propiedad.slug,
       component: require.resolve("./src/components/propiedades"),
       context: {
         id: propiedad.id,

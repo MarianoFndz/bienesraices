@@ -17,11 +17,9 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: "gatsby-source-strapi",
+      resolve: "gatsby-source-datocms",
       options: {
-        apiURL: "https://bienesraices-backend.herokuapp.com/",
-        queryLimit: 1000,
-        contentTypes: ["propiedades", "paginas", "categorias"],
+        apiToken: "2a7faad87d692883b4522eec944be4",
       },
     },
     // {

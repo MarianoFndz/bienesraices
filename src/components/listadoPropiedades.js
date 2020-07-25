@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import { css } from "@emotion/core"
 import usePropiedades from "../hooks/usePropiedades"
 import PropiedadPreview from "./propiedadesPreview.js"
@@ -21,7 +21,7 @@ const ListadoPropiedades = () => {
     } else {
       guardarFiltradas(propiedades)
     }
-  }, [categoria])
+  }, [categoria, propiedades])
 
   return (
     <>

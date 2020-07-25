@@ -1,7 +1,6 @@
 import React from "react"
 import Iconos from "../iconos"
 import Image from "gatsby-image"
-import urlSlug from "url-slug"
 import { Card, Boton, Contenido } from "./styled"
 
 const PropiedadPreview = ({ propiedad }) => {
@@ -12,13 +11,12 @@ const PropiedadPreview = ({ propiedad }) => {
     estacionamiento,
     habitaciones,
     precio,
+    slug,
   } = propiedad
-
-  console.log(imagen)
 
   return (
     <Card>
-      <Image fluid={imagen.sharp.fluid} />
+      <Image fluid={imagen.fluid} />
       <Contenido>
         <h3> {nombre} </h3> <p className="precio"> $ {precio} </p>
         <Iconos
@@ -26,7 +24,7 @@ const PropiedadPreview = ({ propiedad }) => {
           estacionamiento={estacionamiento}
           habitaciones={habitaciones}
         />
-        <Boton to={"/" + urlSlug(nombre)}> Visitar Propiedad </Boton>
+        <Boton to={"/" + slug}> Visitar Propiedad </Boton>
       </Contenido>
     </Card>
   )

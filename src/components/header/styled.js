@@ -7,6 +7,7 @@ export const Logo = styled(Link)`
   font-size: 3rem;
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
+  text-decoration: none;
 `
 export const Contenido = styled.div`
   max-width: 120rem;

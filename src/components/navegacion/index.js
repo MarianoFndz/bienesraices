@@ -10,9 +10,6 @@ const Navegacion = () => {
       <NavLink to={"/nosotros"} activeClassName="pagina-actual">
         Nosotros
       </NavLink>
-      <NavLink to={"/propiedades"} activeClassName="pagina-actual">
-        Propiedades
-      </NavLink>
     </Nav>
   )
 }

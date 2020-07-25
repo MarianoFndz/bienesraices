@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header css={header}>
       <Contenido>
-        <Logo>BienesRaices</Logo>
+        <Logo to="/">BienesRaices</Logo>
         <Navegacion />
       </Contenido>
     </header>

@@ -18,11 +18,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <ImageBackGround
-        tag="section"
-        fluid={imagen.childImageSharp.fluid}
-        fadeIn="soft"
-      >
+      <ImageBackGround tag="section" fluid={imagen.fluid} fadeIn="soft">
         <div className={heroCSS.imagenbg}>
           <h1 className={heroCSS.titulo}>
             Venta de casas y departamentos exclusivos

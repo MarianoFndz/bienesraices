@@ -7,7 +7,7 @@ import { ContenidoPagina } from "./styled"
 
 const Propiedades = ({
   data: {
-    allStrapiPaginas: { nodes },
+    allDatoCmsPagina: { nodes },
   },
 }) => {
   const { nombre, contenido, imagen } = nodes[0]
@@ -17,7 +17,7 @@ const Propiedades = ({
       <main className="contenedor">
         <h1>{nombre}</h1>
         <ContenidoPagina>
-          <Image fluid={imagen.sharp.fluid} />
+          <Image fluid={imagen.fluid} />
           <p>{contenido}</p>
         </ContenidoPagina>
       </main>
@@ -30,15 +30,13 @@ export default Propiedades
 
 export const query = graphql`
   query($id: String!) {
-    allStrapiPaginas(filter: { id: { eq: $id } }) {
+    allDatoCmsPagina(filter: { id: { eq: $id } }) {
       nodes {
         nombre
         contenido
         imagen {
-          sharp: childImageSharp {
-            fluid(maxWidth: 1500) {
-              ...GatsbyImageSharpFluid
-            }
+          fluid(maxWidth: 1500) {
+            ...GatsbyDatoCmsFluid
           }
         }
       }
